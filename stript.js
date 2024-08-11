@@ -1,4 +1,4 @@
-const apiKey = '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';
+const apiKey = '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'; // Zamień na swój rzeczywisty klucz
 
 document.getElementById('queryForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -7,7 +7,7 @@ document.getElementById('queryForm').addEventListener('submit', function(event) 
     const responseDiv = document.getElementById('response');
     responseDiv.innerText = 'Fetching responses...';
 
-    fetch('https://api-inference.huggingface.co/models/gpt2', {
+    fetch('https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3.1-8B-Instruct', {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${apiKey}`,
@@ -17,7 +17,7 @@ document.getElementById('queryForm').addEventListener('submit', function(event) 
     })
     .then(res => res.json())
     .then(data => {
-        // Upewnij się, że prawidłowo przetwarzasz odpowiedź
+        // Dopasuj przetwarzanie danych do struktury odpowiedzi
         const generatedText = data[0]?.generated_text || 'No response';
         responseDiv.innerText = generatedText;
     })
